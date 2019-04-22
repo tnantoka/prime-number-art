@@ -1,11 +1,17 @@
 import _ from 'lodash';
+import p5 from 'p5';
 
-function component() {
-  let element = document.createElement('div');
+new p5(sketch => {
+  const x = 100;
+  const y = 100;
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  sketch.setup = () => {
+    sketch.createCanvas(200, 200);
+  };
 
-  return element;
-}
-
-document.body.appendChild(component());
+  sketch.draw = () => {
+    sketch.background(0);
+    sketch.fill(255);
+    sketch.rect(x, y, 50, 50);
+  };
+}, document.getElementById('p5sketch'));

@@ -1,10 +1,38 @@
 <!doctype html>
 <html>
   <head>
-    <title>Getting Started</title>
+    <title>Prime number art</title>
   </head>
   <body>
-    <div id="p5sketch"></div>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">Primer number art</a>
+    </nav>
+    <div class="m-3">
+      <div class="card mx-auto w-100" style="max-width: 350px">
+        <div id="p5sketch" class="card-body">
+        </div>
+      </div>
+      <form>
+        <div class="form-group">
+          <label for="exampleSelect1" class="bmd-label-floating">Example select</label>
+          <select class="form-control" id="numberOfPins"></select>
+        </div>
+        <div class="switch">
+          <label>
+            <input type="checkbox" checked id="multicolor">
+            Multicolor
+          </label>
+        </div>
+        <div class="row mt-2">
+          <div class="col">
+            <button type="button" class="btn btn-primary btn-outline btn-block" id="refresh">Refresh</button>
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-secondary btn-outline btn-block" id="save">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
     <script src="app.bundle.js"></script>
   </body>
 </html>

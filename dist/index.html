@@ -7,6 +7,9 @@
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="#">Primer number art</a>
     </nav>
+    <div class="progress invisible" id="progress">
+      <div class="progress-bar"  id="progress-bar" style="width: 0%"></div>
+    </div>
     <div class="m-3">
       <div class="card mx-auto w-100" style="max-width: 350px">
         <div id="p5sketch" class="card-body">
@@ -14,21 +17,33 @@
       </div>
       <form>
         <div class="form-group">
-          <label for="exampleSelect1" class="bmd-label-floating">Example select</label>
+          <label for="exampleSelect1" class="bmd-label-floating">Number of pins</label>
           <select class="form-control" id="numberOfPins"></select>
         </div>
-        <div class="switch">
-          <label>
-            <input type="checkbox" checked id="multicolor">
-            Multicolor
-          </label>
+        <div class="row">
+          <div class="col">
+            <div class="switch">
+              <label>
+                <input type="checkbox" checked id="multicolor">
+                Multicolor
+              </label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="switch">
+              <label>
+                <input type="checkbox" checked id="drawCircle">
+                drawCircle
+              </label>
+            </div>
+          </div>
         </div>
         <div class="row mt-2">
           <div class="col">
             <button type="button" class="btn btn-primary btn-outline btn-block" id="refresh">Refresh</button>
           </div>
           <div class="col">
-            <button type="button" class="btn btn-secondary btn-outline btn-block" id="save">Save</button>
+            <button type="button" class="btn btn-secondary btn-outline btn-block" id="download">Download</button>
           </div>
         </div>
       </form>

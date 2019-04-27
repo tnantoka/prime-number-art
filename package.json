@@ -30,6 +30,7 @@
     "jquery": "^3.4.0",
     "lodash": "^4.17.11",
     "p5": "^0.8.0",
+    "p5-animated-draw": "github:tnantoka/p5-animated-draw",
     "popper.js": "^1.15.0"
   }
 }

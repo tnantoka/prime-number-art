@@ -2,6 +2,7 @@ import p5 from 'p5';
 import 'bootstrap-material-design';
 import 'bootstrap-material-design/dist/css/bootstrap-material-design.css';
 import { debounce, random, sample, sampleSize } from 'lodash';
+import Animated from 'p5-animated-draw';
 
 import './index.css';
 
@@ -26,15 +27,18 @@ const colors = [
   '#795548',
   '#9E9E9E'
 ];
+const animatedStep = 40.0;
 
-const seed = ({ size, numberOfPins, isMulticolor }) => sketch => {
+const seed = ({ size, numberOfPins, isMulticolor, isDrawCircle }) => sketch => {
   const step = 360 / numberOfPins;
   const points = [];
+  const animated = new Animated(sketch);
+  let inProgress = true;
 
   sketch.setup = () => {
     sketch.createCanvas(size, size);
 
-    const { width } = sketch;
+    const { width, height } = sketch;
     const center = width * 0.5;
 
     sampleSize(primeNumbers, random(2, primeNumbers.length - 1)).forEach(
@@ -51,32 +55,52 @@ const seed = ({ size, numberOfPins, isMulticolor }) => sketch => {
         }
       }
     );
-  };
-
-  sketch.draw = () => {
-    const { width, height } = sketch;
 
     sketch.fill(255);
-    sketch.circle(width * 0.5, height * 0.5, width * 0.8);
 
-    points.forEach(point => {
-      sketch.fill(0);
-      sketch.circle(point.x, point.y, 3);
-    });
+    if (isDrawCircle) {
+      animated.addCircle(
+        { x: width * 0.5, y: height * 0.5 },
+        width * 0.8,
+        sketch.color('gray'),
+        animatedStep
+      );
+    }
 
+    let lastColor;
     for (var i = 1; i < points.length; i++) {
       const point1 = points[i - 1];
       const point2 = points[i];
-      if (point1.color) {
-        sketch.stroke(sketch.color(point1.color));
+      const color = point1.color || lastColor;
+      animated.addLine(point1, point2, sketch.color(color), animatedStep);
+      lastColor = color;
+    }
+  };
+
+  sketch.draw = () => {
+    if (inProgress) {
+      sketch.clear();
+      animated.draw();
+      const progress = Math.floor(
+        (animated.shapes.filter(shape => !shape.inProgress).length /
+          animated.shapes.length) *
+          100
+      );
+      $('#progress-bar').css({ width: `${progress}%` });
+      if (!animated.shapes[animated.shapes.length - 1].inProgress) {
+        $('#progress').addClass('invisible');
+        $('#refresh').prop('disabled', false);
+        inProgress = false;
       }
-      sketch.line(point1.x, point1.y, point2.x, point2.y);
     }
   };
 };
 
 let p5sketch;
 const initSketch = () => {
+  $('#progress').removeClass('invisible');
+  $('#progress-bar').css({ width: 0 });
+  $('#refresh').prop('disabled', true);
   if (p5sketch) {
     p5sketch.remove();
   }
@@ -84,8 +108,9 @@ const initSketch = () => {
   const size = $parent.width();
   const numberOfPins = parseInt($('#numberOfPins').val());
   const isMulticolor = $('#multicolor').prop('checked');
+  const isDrawCircle = $('#drawCircle').prop('checked');
   p5sketch = new p5(
-    seed({ size, numberOfPins, isMulticolor }),
+    seed({ size, numberOfPins, isMulticolor, isDrawCircle }),
     document.getElementById('p5sketch')
   );
 };
@@ -96,6 +121,6 @@ $(() => {
     .val(sample(primeNumbers));
   initSketch();
   $('#refresh').on('click', initSketch);
-  $('#save').on('click', () => p5sketch.save());
+  $('#download').on('click', () => p5sketch.save());
   $('body').bootstrapMaterialDesign();
 });

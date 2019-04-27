@@ -8,49 +8,63 @@
     <link rel="manifest" href="/manifest.json">
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">Primer number art</a>
-    </nav>
-    <div class="progress invisible" id="progress">
-      <div class="progress-bar"  id="progress-bar" style="width: 0%"></div>
-    </div>
-    <div class="m-3">
-      <div class="card mx-auto w-100" style="max-width: 350px">
-        <div id="p5sketch" class="card-body">
-        </div>
+    <div id="app">
+      <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">Primer number art</a>
+      </nav>
+      <div class="progress invisible" id="progress">
+        <div class="progress-bar"  id="progress-bar" style="width: 0%"></div>
       </div>
-      <form>
-        <div class="form-group">
-          <label for="exampleSelect1" class="bmd-label-floating">Number of pins</label>
-          <select class="form-control" id="numberOfPins"></select>
+      <div class="mx-3 mt-1">
+        <div class="card mx-auto w-100" style="max-width: 350px">
+          <div id="p5sketch" class="card-body">
+          </div>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="switch">
-              <label>
-                <input type="checkbox" checked id="multicolor">
-                Multicolor
-              </label>
+        <form>
+          <div class="form-group">
+            <label for="exampleSelect1" class="bmd-label-floating">Number of pins</label>
+            <select class="form-control" id="numberOfPins"></select>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="switch">
+                <label>
+                  <input type="checkbox" checked id="multicolor">
+                  Multicolor
+                </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="switch">
+                <label>
+                  <input type="checkbox" checked id="drawCircle">
+                  Draw circle
+                </label>
+              </div>
             </div>
           </div>
-          <div class="col">
-            <div class="switch">
-              <label>
-                <input type="checkbox" checked id="drawCircle">
-                Draw circle
-              </label>
+          <div class="row mt-2">
+            <div class="col">
+              <button type="button" class="btn btn-primary btn-outline btn-block" id="refresh">Refresh</button>
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-secondary btn-outline btn-block" id="download">Download</button>
             </div>
           </div>
-        </div>
-        <div class="row mt-2">
-          <div class="col">
-            <button type="button" class="btn btn-primary btn-outline btn-block" id="refresh">Refresh</button>
-          </div>
-          <div class="col">
-            <button type="button" class="btn btn-secondary btn-outline btn-block" id="download">Download</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
+    </div>
+    <div id="ad">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7033544542206385"
+           data-ad-slot="6222912514"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
     <script src="/app.bundle.js"></script>
   </body>

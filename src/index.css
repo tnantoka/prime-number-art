@@ -1,0 +1,8 @@
+#root {
+  min-height: calc(100vh - 90px);
+}
+
+#ad {
+  width: 100%;
+  height: 90px;
+}

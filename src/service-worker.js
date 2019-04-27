@@ -1,5 +1,10 @@
 const cacheName = 'v2';
-const filesToCache = ['/index.html', '/app.bundle.js', '/app.bundle.js.map'];
+const filesToCache = [
+  '/index.html',
+  '/style.css',
+  '/app.bundle.js',
+  '/app.bundle.js.map'
+];
 
 self.addEventListener('install', e => {
   console.log('[ServiceWorker] Install');

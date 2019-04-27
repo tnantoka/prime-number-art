@@ -1,4 +1,4 @@
-import p5 from 'p5';
+import p5 from 'p5/lib/p5.min';
 import 'bootstrap-material-design';
 import 'bootstrap-material-design/dist/css/bootstrap-material-design.css';
 import { debounce, random, sample, sampleSize } from 'lodash';
@@ -124,3 +124,9 @@ $(() => {
   $('#download').on('click', () => p5sketch.save());
   $('body').bootstrapMaterialDesign();
 });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('./service-worker.bundle.js')
+    .then(() => console.log('Service Worker Registered'));
+}

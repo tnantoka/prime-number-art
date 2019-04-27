@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "com.tnantoka.twa.pna",
+               "sha256_cert_fingerprints": ["73:C6:13:80:E8:D4:36:B7:EF:AA:BB:B2:62:0B:C5:99:BC:56:6E:60:74:00:C1:94:CC:52:93:94:10:93:E0:14"] }
+}]
